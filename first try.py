@@ -3,6 +3,7 @@ from sklearn.cluster import KMeans
 import joblib
 import pymorphy2
 import pymystem3
+    
 
 loaded_data = pd.read_csv('Задание.csv', sep='\t')
 print(loaded_data.head(3))
@@ -17,9 +18,9 @@ kmeans = kmeans.fit(X) # обучаем модель
 
 
 # save
-joblib.dump(clf, "model.pkl") 
+#joblib.dump(clf, "model.pkl")
 
 # load
-clf2 = joblib.load("model.pkl")
+#clf2 = joblib.load("model.pkl")
 
-clf2.predict(X[0:1])
+#clf2.predict(X[0:1])
