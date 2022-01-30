@@ -5,3 +5,4 @@
 [ ] - https://pandas.pydata.org/pandas-docs/stable/user_guide/basics.html - документация по панде
 [ ] -https://moscowpython.ru/meetup/72/nlp-cookbook/ - ролик вроде полезный
 [ ] - https://pypi.org/project/textdistance/ - документация по textdistance
+https://newtechaudit.ru/bystraya-klasterizacziya-teksta/
