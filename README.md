@@ -1,5 +1,11 @@
 # Automatization
 Решаю задачку епта
+какие библиотеки нам нужны?
+- [x] pandas
+- [x] pymorphy2
+- [x] 
+- [x] 
+- [x]
 
 Теория: 
 1. https://habr.com/ru/company/ruvds/blog/494720/  - шпоргалка по панде
