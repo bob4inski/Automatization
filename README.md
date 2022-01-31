@@ -1,8 +1,9 @@
 # Automatization
 Решаю задачку епта
-Полезные ссылки: 
-[ ] - https://habr.com/ru/company/ruvds/blog/494720/  - шпоргалка по панде
-[ ] - https://pandas.pydata.org/pandas-docs/stable/user_guide/basics.html - документация по панде
-[ ] -https://moscowpython.ru/meetup/72/nlp-cookbook/ - ролик вроде полезный
-[ ] - https://pypi.org/project/textdistance/ - документация по textdistance
-https://newtechaudit.ru/bystraya-klasterizacziya-teksta/
+
+Теория: 
+1. https://habr.com/ru/company/ruvds/blog/494720/  - шпоргалка по панде
+2. https://pandas.pydata.org/pandas-docs/stable/user_guide/basics.html - документация по панде
+3. https://moscowpython.ru/meetup/72/nlp-cookbook/ - ролик вроде полезный
+4. https://pypi.org/project/textdistance/ - документация по textdistance
+5. https://newtechaudit.ru/bystraya-klasterizacziya-teksta/
