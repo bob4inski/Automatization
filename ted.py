@@ -2,11 +2,11 @@ from ctypes import cdll
 from ntpath import join
 import pandas as pd
 import string
-import textdistance
+#import textdistance
 import pymorphy2
-import pymystem3
+#import pymystem3
 m1 = pymorphy2.MorphAnalyzer()
-m2 = pymystem3.Mystem()
+#m2 = pymystem3.Mystem()
 
 def delete_arc(data):
     data = data.lower()
@@ -60,29 +60,41 @@ def numbers_and_trash(data):
     without_num =' '.join(data_set)
     return without_num
 
-def minus_dwa_or_tri(data):
+def minus_dwa_or_tri(data, n = 0 ): # при N не равном 0 мы берем только первое слово
     data_set = data.split()
     #len_data_set = len(data_set)
     result = []
-    try:
-        result.append(data_set[0])
-        result.append(data_set[1])
-        result.append(data_set[2])
-        result = ' '.join(result)
-        return result
-    except:
+    if n == 0:
         try:
             result.append(data_set[0])
             result.append(data_set[1])
-            result = ' '.join(result)
-            return result
+            result.append(data_set[2])
+            if data_set[2] == 'для':
+                result.append(data_set[3])
         except:
             try:
                 result.append(data_set[0])
-                result = ' '.join(result)
-                return result
+                result.append(data_set[1])
+
             except:
-                return 'Sorry, my bad'
+                try:
+                    result.append(data_set[0])
+
+
+                except:
+                    result =  'Sorry, my bad'
+        result = ' '.join(result)
+        return result
+    else:
+        return data_set[0]
+
+def normalaize(data):
+    data_set = data.split()
+    for datas in data_set:
+        c = m1.parse(datas)[0]
+        datas = c.normal_form
+    data1 = ' '.join(data_set)
+    return data1
 
 loaded_data = pd.read_csv('Задание.csv', sep='\t', )
 #print(loaded_data.head(100))
@@ -94,14 +106,16 @@ loaded_data[['first', 'second', 'third']] = None
 for i in range(len_dataframe):
     loaded_data['Номенклатура'][i] = delete_arc(loaded_data['Номенклатура'][i])
     #loaded_data['first'][i] = key(loaded_data['Номенклатура'][i])
-    loaded_data['first'][i] = m1.parse(minus_dwa_or_tri(key(loaded_data['Номенклатура'][i])))
-    loaded_data['second'][i] = m1.parse(loaded_data['first'][i])
+    loaded_data['first'][i] = minus_dwa_or_tri(key(loaded_data['Номенклатура'][i]))
+    loaded_data['second'][i] = normalaize(loaded_data['first'][i])
+    loaded_data['third'][i] = minus_dwa_or_tri(loaded_data['first'][i],1)
 
 
-loaded_data.sort_values(by='Номенклатура')
 
-print(numbers_and_trash( key(delete_arc(loaded_data['Номенклатура'][260]))))
-loaded_data.to_csv('really_withoutarc.csv', index=False)
+loaded_data = loaded_data.sort_values(by='second')
+
+print(loaded_data['first'][11232])
+loaded_data.to_csv('bruh.csv', index=False)
 
 print(loaded_data.head(100))
 
